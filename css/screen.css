@@ -19,3 +19,8 @@
 .todo-item {
   font-size: 20px;
 }
+
+.add-todo button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
