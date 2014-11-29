@@ -8,5 +8,3 @@ var TodoSchema = new mongoose.Schema({
 });
 
 mongoose.model('Todo', TodoSchema);
-console.log('in Todos.js')
-console.log(mongoose.modelNames());
