@@ -4,7 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
+
+// db connection
+mongoose.connect('mongodb://localhost/habitvps');
+require('./models/Todos');
+console.log('in app.js');
+console.log(mongoose.modelNames());
+
+// Must import routes after db so that models are defined
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
