@@ -29,6 +29,7 @@ router.route('/todos')
     res.json(todo);
   });
 })
+// Current behavior is that post requests that have extra fields will get created, but extra fields are not saved
 .post(function(req, res, next) {
   var todo = new Todo(req.body);
   todo.save(function(err, todo) {
