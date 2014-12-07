@@ -21,6 +21,7 @@ router.param('todoId', function(req, res, next, id) {
 
 // For all routes that don't need an ID
 router.route('/todos')
+// curl http://localhost:3000/api/todos
 .get(function(req, res, next) {
   Todo.find(function(err, todo) {
     if (err) {
@@ -49,7 +50,15 @@ router.route('/todos/:todoId')
 // curl -X PUT --data 'title=SomeOtherTitle&order=5&isDone=true&points=2' http://localhost:3000/api/todos/547a5379c4b26e0078c022cd
 .put(function(req, res, next) {
   var todo = req.todo;
-
+  todo.update(req.body, function(err) {
+    if (err) {
+      return next(err);
+    }
+    res.json(todo);
+  });
+})
+.patch(function(req, res, next) {
+  var todo = req.todo;
   todo.update(req.body, function(err) {
     if (err) {
       return next(err);
