@@ -5,6 +5,7 @@
     "requirejs": "latest",
     "jquery": "latest",
     "backbone-amd": "latest",
-    "underscore-amd": "latest"
+    "underscore-amd": "latest",
+    "handlebars": "~2.0.0"
   }
 }

@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     handlebars: {
       compile: {
         options: {
-          namespace: "templates"
+          namespace: "templates",
+          amd: true
         },
         files: {
           "public/javascripts/templates.js": ["views/*.hbs"]
