@@ -7,12 +7,23 @@ var Todo = mongoose.model('Todo');
 
 // Middleware function that tries to attach a todo object to requests with a "todo" parameter
 router.param('todoId', function(req, res, next, id) {
-  var query = Todo.findById(id);
+  // Cast to ObjectId first because cast error shouldn't cause 500
+  var objectId;
+  try {
+    objectId = mongoose.Types.ObjectId(id);
+  } catch (e) {
+    var error = Error('cant find resource');
+    error.status = 404;
+    return next(error);
+  }
+  var query = Todo.findById(objectId);
 
   query.exec(function(err, todo) {
     if (err) { return next(err); }
     if (!todo) {
-      return next(new Error("can't find todo"));
+      var error = Error("can't find resource");
+      error.status(404);
+      return next(error);
     }
     req.todo = todo;
     return next();
@@ -72,5 +83,7 @@ router.route('/todos/:todoId')
   // What's the most appropriate message to return?
   res.json({message: 'success'});
 });
+
+
 
 module.exports = router;
