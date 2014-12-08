@@ -8,6 +8,7 @@ var Item = mongoose.model('Item');
 var UserData = mongoose.model('UserData');
 var Pet = mongoose.model('Pet');
 var Species = mongoose.model('Species');
+var AdventureZone = mongoose.model('AdventureZone');
 
 // Function that adds a generic restful API to a model
 // router - an expressjs router
@@ -125,5 +126,6 @@ fullRestApi(router, 'items', Item);
 fullRestApi(router, 'userData', UserData);
 fullRestApi(router, 'pet', Pet);
 readOnlyApi(router, 'species', Species);
+readOnlyApi(router, 'adventureZones', AdventureZones);
 
 module.exports = router;
