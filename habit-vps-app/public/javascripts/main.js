@@ -5,6 +5,7 @@ require.config({
     underscore: '/bower_components/underscore-amd/underscore-min',
     backbone: '/bower_components/backbone-amd/backbone-min',
     handlebars: '/bower_components/handlebars/handlebars.runtime.min',
+    marionette: '/bower_components/marionette/lib/backbone.marionette.min.js'
   }
 });
 

@@ -126,6 +126,6 @@ fullRestApi(router, 'items', Item);
 fullRestApi(router, 'userData', UserData);
 fullRestApi(router, 'pet', Pet);
 readOnlyApi(router, 'species', Species);
-readOnlyApi(router, 'adventureZones', AdventureZones);
+readOnlyApi(router, 'adventureZones', AdventureZone);
 
 module.exports = router;

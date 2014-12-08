@@ -6,6 +6,7 @@
     "jquery": "latest",
     "backbone-amd": "latest",
     "underscore-amd": "latest",
-    "handlebars": "~2.0.0"
+    "handlebars": "~2.0.0",
+    "marionette": "~2.2.2"
   }
 }
