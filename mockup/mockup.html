@@ -23,26 +23,28 @@
       <div class="todo-display col-md-8">
         <h2 class="row title">Here's what's on your plate, Alex:</h2>
         <div class="row todo-item">
-          <span>Pick up Adderal (+1 point)</span>
           <input type="checkbox" class="checkbox-inline">
+          <span>Pick up Adderal (+1 point)</span>
         </div>
         <div class="row todo-item">
-          <span>Buy airline ticket (+1 point)</span>
           <input type="checkbox" class="checkbox-inline">
+          <span>Buy airline ticket (+1 point)</span>
         </div>
         <div class="row add-todo">
           <form class="form-inline" role="form">
-            <div class="form-group">
+            <div class="form-group col-md-9">
               <div class="input-group">
                 <input type="text" class="form-control add-todo-input" placeholder="Add new task">
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary col-md-3">Add</button>
           </form>
         </div>
         <h2 class="row title">Your successes so far:</h2>
-        <ul>
-          <li>Take shower</li>
+        <ul class="done-todo">
+          <li><input type="checkbox" value="true"><span class="todo-desc">Take shower</span></li>
+          <li><input type="checkbox" value="true"><span class="todo-desc">lorem ipsum asdfasd asdfasdf asdf</span></li>
+
         </ul>
       </div>
     </div>
