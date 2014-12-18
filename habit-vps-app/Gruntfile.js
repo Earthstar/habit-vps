@@ -21,7 +21,11 @@ module.exports = function(grunt) {
       compile: {
         options: {
           namespace: "templates",
-          amd: true
+          amd: true,
+          processName: function(filePath) {
+            // remove everything before the last / and the first .
+            return filePath.match(/\/(?=[^/]*$)((\w)+)/)[1];
+          }
         },
         files: {
           "public/javascripts/templates.js": ["views/*.hbs"]
