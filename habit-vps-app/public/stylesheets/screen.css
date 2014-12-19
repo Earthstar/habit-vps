@@ -1,0 +1,64 @@
+.row {
+  margin-left: 0;
+}
+
+input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+}
+
+.pet-display > span, .pet-display > button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.stat {
+  display: block;
+}
+
+.title {
+  text-align: center;
+}
+
+.pet-action > * {
+  display: block;
+  padding-right: 15px;
+}
+
+.todo-item input[type="checkbox"] {
+  position: relative;
+  top: -4px;
+}
+
+.todo-item {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.add-todo .form-group {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.add-todo button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.add-todo .input-group {
+  width: 100%;
+}
+
+.done-todo {
+  -webkit-padding-start: 0;
+}
+
+.done-todo > li {
+  display: block;
+}
+
+.done-todo input[type=checkbox] {
+  margin-right: 4px;
+  position: relative;
+  top: 2px;
+}

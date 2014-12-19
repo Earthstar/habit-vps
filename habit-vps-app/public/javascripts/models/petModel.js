@@ -1,7 +1,7 @@
 define(function(require) {
   var Backbone = require('backbone');
 
-  return Bacbone.Model.extend({
+  return Backbone.Model.extend({
     urlRoot: '/api/pets',
     defaults: function() {
       return {
