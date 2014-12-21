@@ -23,7 +23,13 @@ define(function(require) {
     // onRender will be called when the view is rendered, but the view may not be attached to the dom yet
     onRender: function() {
       console.log('dashboard onRender');
-      this.petDisplay.show(new PetView({model: new PetModel()}));
+      this.petDisplay.show(new PetView({
+        model: new PetModel({
+          name: 'Jake',
+          hunger: 5,
+          energy: 5
+        })
+      }));
     },
 
   });
