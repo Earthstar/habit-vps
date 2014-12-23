@@ -1,0 +1,1 @@
+{ "name" : "Larry", "hunger" : 5, "energy" : 3, "species" : { "$oid" : "5499c2f4e2536a0e24bc3f34" }, "_id" : { "$oid" : "5499c352e2536a0e24bc3f35" }, "__v" : 0 }

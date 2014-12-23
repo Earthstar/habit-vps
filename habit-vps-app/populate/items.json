@@ -1,0 +1,3 @@
+{ "name" : "SwordOfDebugging", "_id" : { "$oid" : "5499c12de2536a0e24bc3f30" }, "__v" : 0 }
+{ "name" : "ShieldOfDebugging", "_id" : { "$oid" : "5499c191e2536a0e24bc3f31" }, "__v" : 0 }
+{ "name" : "BootsOfDebugging", "_id" : { "$oid" : "5499c199e2536a0e24bc3f32" }, "__v" : 0 }

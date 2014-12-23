@@ -31,13 +31,60 @@ module.exports = function(grunt) {
           "public/javascripts/templates.js": ["views/*.hbs"]
         }
       }
+    },
+    // initialize data
+    mongoimport: {
+      options: {
+        db: 'habitvps',
+        stopOnError: true,
+        collections: [
+          {
+            name: 'items',
+            type: 'json',
+            file: 'populate/items.json',
+            drop: true
+          },
+          {
+            name: 'adventurezones',
+            type: 'json',
+            file: 'populate/adventurezones.json',
+            drop: true
+          },
+          {
+            name: 'pets',
+            type: 'json',
+            file: 'populate/pets.json',
+            drop: true
+          },
+          {
+            name: 'species',
+            type: 'json',
+            file: 'populate/species.json',
+            drop: true
+          },
+          {
+            name: 'todos',
+            type: 'json',
+            file: 'populate/todos.json',
+            drop: true
+          },
+          {
+            name: 'userdatas',
+            type: 'json',
+            file: 'populate/userdatas.json',
+            drop: true
+          }
+        ]
+      }
     }
   });
 
   // List of plugins
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-express');
+  grunt.loadNpmTasks('grunt-mongoimport');
 
   // Map of tasks to plugins
   grunt.registerTask('default', ['handlebars', 'express', 'express-keepalive']);
+  grunt.registerTask('populate', ['mongoimport']);
 };
