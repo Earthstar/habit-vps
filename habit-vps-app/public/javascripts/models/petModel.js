@@ -3,13 +3,12 @@ define(function(require) {
 
   return Backbone.Model.extend({
     urlRoot: '/api/pets',
-    defaults: function() {
-      return {
-        name: '',
-        hunger: 0,
-        energy: 0,
-        species: null
-      };
-    }
+    // defaults: function() {
+    //   return {
+    //     name: 'Lucifer',
+    //     hunger: 5,
+    //     energy: 5
+    //   };
+    // }
   });
 });

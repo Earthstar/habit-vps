@@ -13,12 +13,10 @@ define(function(require) {
   var Marionette = require('marionette'),
       DashboardLayoutView = require('views/dashboardLayoutView'),
       PetView = require('views/petView');
+
   var HabitVPSApp = Marionette.Application.extend({
-    initialize: function(options) {
-      console.log('app started');
+    initialize: function() {
       this.rootView = new DashboardLayoutView({el: 'body'});
-      this.rootView.render();
-      console.log('after render');
     }
   });
   var app = new HabitVPSApp();
