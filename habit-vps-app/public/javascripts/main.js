@@ -10,14 +10,10 @@ require.config({
 });
 
 define(function(require) {
-  var Marionette = require('marionette'),
+  var Backbone = require('backbone'),
       DashboardLayoutView = require('views/dashboardLayoutView'),
       PetView = require('views/petView');
 
-  var HabitVPSApp = Marionette.Application.extend({
-    initialize: function() {
-      this.rootView = new DashboardLayoutView({el: 'body'});
-    }
-  });
-  var app = new HabitVPSApp();
+  this.rootView = new DashboardLayoutView({el: 'body'});
+  this.rootView.render();
 });

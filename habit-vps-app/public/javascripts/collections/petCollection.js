@@ -4,6 +4,7 @@ define(function(require) {
 
   return Backbone.Collection.extend({
     url: '/api/pets',
+    model: PetModel,
 
     initialize: function() {
       this.listenTo(this, 'all', function(eventName) {console.log(eventName);});

@@ -1,36 +1,48 @@
 define(function(require) {
 
-  var Marionette = require('marionette'),
+  var Backbone = require('backbone'),
       templates = require('templates'),
       PetView = require('views/petView'),
-      PetModel = require('models/petModel');
+      PetModel = require('models/petModel'),
+      SpeciesModel = require('models/speciesModel'),
+      PetCollection = require('collections/petCollection');
 
-  return Marionette.LayoutView.extend({
+  return Backbone.View.extend({
     template: templates.dashboardLayout,
 
     events: {
     },
 
-    regions: {
-      petDisplay: '.pet-display',
-      todoDisplay: '.todo-display'
-    },
+    petCollection: null,
+    _petModel: new PetModel(),
+    _petView: null,
 
     initialize: function() {
-      console.log('in dashboard initialize');
+      var obj = this;
+      this.petCollection = new PetCollection();
+      this.listenTo(this.petCollection, 'sync', this.render);
+      this._petView = new PetView({
+        model: this._petModel,
+      });
+      // Fetch the pet and the species
+      this.petCollection.fetch()
+      .then(function() {
+        obj._petModel = obj.petCollection.getPet();
+        obj._petModel.fetchSpecies();
+        obj._petView = new PetView({
+          model: obj._petModel
+        });
+      });
+      this.render();
     },
 
-    // onRender will be called when the view is rendered, but the view may not be attached to the dom yet
-    onRender: function() {
-      console.log('dashboard onRender');
-      this.petDisplay.show(new PetView({
-        model: new PetModel({
-          name: 'Jake',
-          hunger: 5,
-          energy: 5
-        })
-      }));
-    },
+    render: function() {
+      var context = {};
+      this.$el.html(this.template(context));
+
+      this._petView.$el = this.$el.find('.pet-display');
+      this._petView.render();
+    }
 
   });
 });
