@@ -124,7 +124,7 @@ var fullRestApi = function(router, route, model) {
 fullRestApi(router, 'todos', Todo);
 fullRestApi(router, 'items', Item);
 fullRestApi(router, 'userData', UserData);
-fullRestApi(router, 'pet', Pet);
+fullRestApi(router, 'pets', Pet);
 readOnlyApi(router, 'species', Species);
 readOnlyApi(router, 'adventureZones', AdventureZone);
 
