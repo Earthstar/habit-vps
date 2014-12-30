@@ -10,10 +10,6 @@ define(function(require) {
 
     speciesModel: new SpeciesModel(),
 
-    initialize: function() {
-      this.listenTo(this, 'all', function(event) {console.log(event)})
-    },
-
     // Fetches the species and triggers a sync event.
     fetchSpecies: function() {
       var obj = this;

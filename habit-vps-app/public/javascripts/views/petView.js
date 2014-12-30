@@ -10,7 +10,6 @@ define(function(require) {
     initialize: function(options) {
       options = options || {};
       this.listenTo(this.model, 'sync', this.render);
-      this.listenTo(this.model, 'all', function(event) {console.log(event)})
     },
 
     prepare: function() {
@@ -24,8 +23,6 @@ define(function(require) {
 
     //Problem is: after the sync happens, the model isn't getting updated?
     render: function() {
-      console.log('in petView');
-      console.log(this.model.attributes);
       var context = this.prepare();
       this.$el.html(this.template(context));
     }

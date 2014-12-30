@@ -1,6 +1,6 @@
-<h2 class="row title">{{{name}}}</h2>
-<h3 class="row title">the Murdercrow</h3>
-<span class="row stat">Hunger: {{{hunger}}}/10</span>
-<span class="row stat">Energy: {{{energy}}}/10</span>
-<span class="row stat">Points: 1</span>
+<h2 class="row title">{{pet.name}}</h2>
+<h3 class="row title">the {{species.name}}</h3>
+<span class="row stat">Hunger: {{pet.hunger}}/{{species.maxHunger}}</span>
+<span class="row stat">Energy: {{pet.energy}}/{{species.maxEnergy}}</span>
+{{!-- <span class="row stat">Points: 1</span> --}}
 <button type="button" class="row btn btn-block">Feed (-1 point)</button>
