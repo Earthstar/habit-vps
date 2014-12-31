@@ -11,9 +11,8 @@ require.config({
 
 define(function(require) {
   var Backbone = require('backbone'),
-      DashboardLayoutView = require('views/dashboardLayoutView'),
-      PetView = require('views/petView');
+      SidebarLayoutView = require('views/sidebarLayoutView');
 
-  this.rootView = new DashboardLayoutView({el: 'body'});
+  this.rootView = new SidebarLayoutView({el: 'body'});
   this.rootView.render();
 });
