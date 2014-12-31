@@ -32,6 +32,11 @@ module.exports = function(grunt) {
         }
       }
     },
+    // If any changes happen to handlebars files, recompile handlebars
+    watch: {
+      files: ['**/*.hbs'],
+      tasks: ['handlebars']
+    },
     // initialize data
     mongoimport: {
       options: {
@@ -83,8 +88,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-mongoimport');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+
+  grunt.event.on('watch', function(action, filepath, target) {
+    grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
+  });
 
   // Map of tasks to plugins
-  grunt.registerTask('default', ['handlebars', 'express', 'express-keepalive']);
+  grunt.registerTask('default', ['handlebars', 'express:server']);
   grunt.registerTask('populate', ['mongoimport']);
 };
