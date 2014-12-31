@@ -3,10 +3,12 @@
   "version": "0.1",
   "dependencies": {
     "requirejs": "latest",
-    "jquery": "latest",
+    "jquery": "~2.1.3",
     "backbone-amd": "latest",
     "underscore-amd": "latest",
     "handlebars": "~2.0.0",
-    "marionette": "~2.2.2"
+    "backbone": "~1.1.2",
+    "backbone-nested-model": "~2.0.1",
+    "underscore": "~1.7.0"
   }
 }
