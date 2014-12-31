@@ -8,21 +8,24 @@ define(function(require) {
   return Backbone.Model.extend({
     urlRoot: '/api/pets',
 
-    speciesModel: new SpeciesModel(),
+    speciesModel: null,
 
     // Fetches the species and triggers a sync event.
     fetchSpecies: function() {
-      var obj = this;
+      var obj = this,
+          deferred = $.Deferred();
       // Species is unlikely to change, so can be cached
-      if (this.speciesModel.isNew()) {
+      if (!this.speciesModel) {
         this.speciesModel = new SpeciesModel({id: this.attributes.species});
         this.speciesModel.fetch()
         .then(function() {
           obj.trigger('sync');
+          deferred.resolve(obj.speciesModel);
         }, function() {
-          return new Error('Was not able to load species');
+          deferred.reject(new Error('Was not able to load species'));
         });
       }
+      return deferred.promise();
     },
 
     setSpecies: function(species) {

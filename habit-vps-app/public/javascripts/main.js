@@ -5,14 +5,14 @@ require.config({
     underscore: '/bower_components/underscore-amd/underscore-min',
     backbone: '/bower_components/backbone-amd/backbone-min',
     handlebars: '/bower_components/handlebars/handlebars.runtime.min',
-    marionette: '/bower_components/marionette/lib/backbone.marionette'
+    "backbone-nested": '/bower_components/backbone-nested-model/backbone-nested'
   }
 });
 
 define(function(require) {
-  var Backbone = require('backbone'),
+  var $ = require('jquery'),
       SidebarLayoutView = require('views/sidebarLayoutView');
 
-  this.rootView = new SidebarLayoutView({el: 'body'});
-  this.rootView.render();
+  this.rootView = new SidebarLayoutView();
+  $('body').append(this.rootView.$el);
 });

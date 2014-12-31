@@ -1,6 +1,6 @@
 define(function(require) {
 
-  var Backbone = require('backbone'),
+  var Webcore = require('webcore'),
       templates = require('templates'),
       PetView = require('views/petView'),
       PetModel = require('models/petModel'),
@@ -8,31 +8,34 @@ define(function(require) {
       AdventureSelectView = require('views/adventureSelectView'),
       AdventureZoneCollection = require('collections/adventureZoneCollection');
 
-  return Backbone.View.extend({
+  return Webcore.View.extend({
     template: templates.sidebarLayout,
 
     events: {
     },
 
     petCollection: null,
-    _petModel: new PetModel(),
+    _petModel: null,
     _petView: null,
     _adventureView: null,
 
     initialize: function() {
       var obj = this;
       this.petCollection = new PetCollection();
-      this.listenTo(this.petCollection, 'sync', this.render);
-      this._petView = new PetView({
-        model: this._petModel,
-      });
+      // This is bad because it prevents attaching the correct listeners?
+      // this._petView = new PetView({
+      //   model: this._petModel,
+      // });
       // Fetch the pet and the species
       this.petCollection.fetch()
       .then(function() {
         obj._petModel = obj.petCollection.getPet();
-        obj._petModel.fetchSpecies();
-        obj._petView = new PetView({
-          model: obj._petModel
+        obj._petModel.fetchSpecies()
+        .then(function() {
+          obj._petView = new PetView({
+            model: obj._petModel
+          });
+          obj.render();
         });
       });
 
@@ -44,10 +47,9 @@ define(function(require) {
 
     render: function() {
       var context = {};
-      this.$el.html(this.template(context));
+      this.templateRender(this.$el, this.template, context);
 
-      // Should already have rendered
-      this.$el.find('.pet-display').html(this._petView.$el);
+      this.injectView('pet-display-site', this._petView);
 
       // this.$el.find('.adventure-display').html(this._adventureView.$el);
     }

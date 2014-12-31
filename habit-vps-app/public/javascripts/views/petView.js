@@ -1,15 +1,13 @@
 define(function(require) {
-  var Backbone = require('backbone'),
+  var Webcore = require('webcore'),
       templates = require('templates');
 
-  return Backbone.View.extend({
+  return Webcore.View.extend({
     template: templates.petStatus,
-    tagName: 'petView',
 
     // options.model PetModel
     initialize: function(options) {
       options = options || {};
-      this.listenTo(this.model, 'sync', this.render);
     },
 
     prepare: function() {
@@ -21,10 +19,9 @@ define(function(require) {
       return context;
     },
 
-    //Problem is: after the sync happens, the model isn't getting updated?
     render: function() {
       var context = this.prepare();
-      this.$el.html(this.template(context));
+      this.templateRender(this.$el, this.template, context);
     }
   });
 });
