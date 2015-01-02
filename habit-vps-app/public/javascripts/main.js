@@ -5,7 +5,8 @@ require.config({
     underscore: '/bower_components/underscore-amd/underscore-min',
     backbone: '/bower_components/backbone-amd/backbone-min',
     handlebars: '/bower_components/handlebars/handlebars.runtime.min',
-    "backbone-nested": '/bower_components/backbone-nested-model/backbone-nested'
+    "backbone-nested": '/bower_components/backbone-nested-model/backbone-nested',
+    webcore: 'webcore.min'
   }
 });
 

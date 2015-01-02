@@ -6,6 +6,7 @@ define(function(require) {
       PetModel = require('models/petModel'),
       PetCollection = require('collections/petCollection'),
       AdventureSelectView = require('views/adventureSelectView'),
+      AdventureButtonView = require('views/adventureButtonView'),
       AdventureZoneCollection = require('collections/adventureZoneCollection');
 
   return Webcore.View.extend({
@@ -22,10 +23,6 @@ define(function(require) {
     initialize: function() {
       var obj = this;
       this.petCollection = new PetCollection();
-      // This is bad because it prevents attaching the correct listeners?
-      // this._petView = new PetView({
-      //   model: this._petModel,
-      // });
       // Fetch the pet and the species
       this.petCollection.fetch()
       .then(function() {
@@ -40,7 +37,17 @@ define(function(require) {
       });
 
       this._adventureZoneCollection = new AdventureZoneCollection();
-      this._adventureView = new AdventureSelectView({collection: this._adventureZoneCollection});
+      this._adventureView = new AdventureSelectView({
+        collection: this._adventureZoneCollection,
+        childModel: 'model',
+        childView: AdventureButtonView,
+        template: templates.adventureSelect,
+        childrenContainer: 'adventure-button-site'
+      });
+      this._adventureZoneCollection.fetch()
+      .then(function() {
+        obj._adventureZoneCollection.trigger('reset');
+      });
 
       this.render();
     },
@@ -50,8 +57,7 @@ define(function(require) {
       this.templateRender(this.$el, this.template, context);
 
       this.injectView('pet-display-site', this._petView);
-
-      // this.$el.find('.adventure-display').html(this._adventureView.$el);
+      this.injectView('adventure-display-site', this._adventureView);
     }
 
   });

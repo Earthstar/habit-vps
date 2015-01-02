@@ -1,13 +1,13 @@
 define(function(require) {
-  var Backbone = require('backbone'),
+  var Webcore = require('webcore'),
       templates = require('templates');
 
-  return Backbone.View.extend({
+  return Webcore.View.extend({
     template: templates.adventureButton,
 
-    // options.model AdventureZoneModel
-    initialize: function(options) {
-      this.listenTo(this.model, 'sync', this.render);
+    // args.model AdventureZoneModel
+    initialize: function(args) {
+      console.log(args);
     },
 
     prepare: function() {
@@ -16,7 +16,8 @@ define(function(require) {
 
     render: function() {
       var context = this.prepare();
-      this.$el.html(this.template(context));
+      this.templateRender(this.$el, this.template, context);
+      console.log(this.$el.html());
     }
   });
 });

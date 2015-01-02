@@ -1,10 +1,14 @@
 define(function(require) {
-  var Backbone = require('backbone'),
+  var Webcore = require('webcore'),
       AdventureZoneModel = require('models/adventureZoneModel');
 
-  return Backbone.Collection.extend({
+  return Webcore.Collection.extend({
     url: '/api/adventureZones',
-    model: AdventureZoneModel
+    model: AdventureZoneModel,
+
+    initialize: function() {
+      this.listenTo(this, 'all', function(event) {console.log(event)})
+    }
 
   });
 });
