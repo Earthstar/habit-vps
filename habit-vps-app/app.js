@@ -29,7 +29,7 @@ mongoose.connect('mongodb://localhost/habitvps');
 walk(MODELS_PATH);
 
 // Must import routes after db so that models are defined
-var routes = require('./routes/index');
+var root = require('./routes/index');
 var users = require('./routes/users');
 var api = require('./routes/api');
 
@@ -48,15 +48,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
-app.use('/', routes);
-app.use('/users', users);
+// match api calls first
 app.use('/api', api);
+app.use('/users', users);
+app.use('/', root);
+console.log('in app.js');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+  console.log('in 404 error')
 });
 
 // error handlers
@@ -65,6 +68,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log('in dev environment error handler');
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
