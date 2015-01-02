@@ -12,8 +12,29 @@ require.config({
 
 define(function(require) {
   var $ = require('jquery'),
+      Backbone = require('backbone'),
       SidebarLayoutView = require('views/sidebarLayoutView');
 
-  this.rootView = new SidebarLayoutView();
-  $('body').append(this.rootView.$el);
+  var HabitVpsApp = Backbone.Router.extend({
+    routes: {
+      '': 'dashboard',
+      'testRoute': 'testRoute'
+    },
+
+    initialize: function() {
+      console.log('router initialized');
+    },
+
+    dashboard: function() {
+      this.rootView = new SidebarLayoutView();
+      $('body').append(this.rootView.$el);
+    },
+
+  });
+
+  var app = new HabitVpsApp();
+
+  // enable pushState to use urls without hashtags
+  Backbone.history.start({pushState: true});
+
 });
