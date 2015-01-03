@@ -4,7 +4,8 @@ define(function(require) {
       templates = require('templates'),
       TodoCollection = require('collections/todoCollection'),
       TodoItemView = require('views/todoItemView'),
-      AddTodoView = require('views/addTodoView');
+      AddTodoView = require('views/addTodoView'),
+      DoneTodoView = require('views/doneTodoView');
 
   return Webcore.View.extend({
     template: templates.todoLayout,
@@ -24,15 +25,21 @@ define(function(require) {
             return model.get('isDone') === false;
           });
         }
-
+      });
+      this._doneTodosView = new Webcore.Views.List({
+        collection: this._todoCollection,
+        childModel: 'model',
+        childView: DoneTodoView,
+        modelsToRender: function() {
+          return obj._todoCollection.filter(function(model) {
+            return model.get('isDone') === true;
+          });
+        }
       });
 
       this._addTodoView = new AddTodoView({collection: this._todoCollection});
 
       this._todoCollection.fetch();
-      // .then(function(){
-      //   console.log(this._todoCollection);
-      // });
       this.render();
     },
 
@@ -46,7 +53,7 @@ define(function(require) {
 
       this.injectView('unfinished-todo-site', this._unfinishedTodosView);
       this.injectView('add-todo-site', this._addTodoView);
-      // this.injectView('done-todo-site', )
+      this.injectView('done-todo-site', this._doneTodosView);
       this.delegateEvents();
     }
   });
