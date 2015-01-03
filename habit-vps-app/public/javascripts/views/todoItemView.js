@@ -5,6 +5,10 @@ define(function(require) {
   return Webcore.View.extend({
     template: templates.todoItem,
 
+    events: {
+      'click input': 'print'
+    },
+
     // args.model todoModel
     initialize: function(args) {
       console.log(args.model);
@@ -18,6 +22,11 @@ define(function(require) {
     render: function() {
       var context = this.prepare();
       this.templateRender(this.$el, this.template, context);
+      this.delegateEvents();
+    },
+
+    print: function(event) {
+      console.log(event);
     }
   });
 });

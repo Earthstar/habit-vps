@@ -8,12 +8,10 @@ define(function(require) {
 
     events: {
       'click button': 'addTodo',
-      'focus input': 'printStuff'
     },
 
     // Expects a todo collection
     initialize: function() {
-      console.log('in addTodoView initialize')
       this.render();
     },
 
@@ -24,12 +22,11 @@ define(function(require) {
     render: function() {
       var context = this.prepare();
       this.templateRender(this.$el, this.template, context);
-
+      this.delegateEvents();
     },
 
-    // Adds a new todo to the collection and clears the old todo
+    // Adds a new todo to the collection and clears the form for the old todo
     addTodo: function(event) {
-      console.log('in addTodo')
       event.preventDefault();
 
       var input = $('.add-todo-input');
@@ -40,10 +37,6 @@ define(function(require) {
         points: 1
       });
       input.val('');
-    },
-
-    printStuff: function() {
-      console.log(arguments);
     }
   });
 });

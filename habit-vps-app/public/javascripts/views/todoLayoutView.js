@@ -27,7 +27,7 @@ define(function(require) {
 
       });
 
-      this._addTodoView = new AddTodoView();
+      this._addTodoView = new AddTodoView({collection: this._todoCollection});
 
       this._todoCollection.fetch();
       // .then(function(){
