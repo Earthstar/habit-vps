@@ -7,7 +7,6 @@ define(function(require) {
 
     // args.model AdventureZoneModel
     initialize: function(args) {
-      console.log(args);
     },
 
     prepare: function() {
@@ -17,7 +16,6 @@ define(function(require) {
     render: function() {
       var context = this.prepare();
       this.templateRender(this.$el, this.template, context);
-      console.log(this.$el.html());
     }
   });
 });

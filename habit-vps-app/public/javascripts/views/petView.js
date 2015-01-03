@@ -11,7 +11,6 @@ define(function(require) {
     },
 
     prepare: function() {
-      console.log(this.model);
       var context = {
         pet: this.model.toJSON(),
         species: this.model.speciesModel.toJSON()

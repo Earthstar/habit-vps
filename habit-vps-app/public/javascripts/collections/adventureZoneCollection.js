@@ -7,7 +7,6 @@ define(function(require) {
     model: AdventureZoneModel,
 
     initialize: function() {
-      this.listenTo(this, 'all', function(event) {console.log(event)})
     }
 
   });

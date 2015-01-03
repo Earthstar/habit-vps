@@ -13,20 +13,19 @@ require.config({
 define(function(require) {
   var $ = require('jquery'),
       Backbone = require('backbone'),
-      SidebarLayoutView = require('views/sidebarLayoutView');
+      DashboardLayoutView = require('views/dashboardLayoutView');
 
   var HabitVpsApp = Backbone.Router.extend({
+
     routes: {
-      '': 'dashboard',
-      'testRoute': 'testRoute'
+      '': 'dashboard'
     },
 
     initialize: function() {
-      console.log('router initialized');
     },
 
     dashboard: function() {
-      this.rootView = new SidebarLayoutView();
+      this.rootView = new DashboardLayoutView();
       $('body').append(this.rootView.$el);
     },
 
