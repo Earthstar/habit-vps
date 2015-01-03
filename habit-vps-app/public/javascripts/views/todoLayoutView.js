@@ -19,11 +19,11 @@ define(function(require) {
         childModel: 'model',
         childView: TodoItemView,
         // This view only shows todos that are not done
-        // modelsToRender: function() {
-        //   obj._todoCollection.filter(function(model) {
-        //     return model.get('isDone') === false;
-        //   });
-        // }
+        modelsToRender: function() {
+          return obj._todoCollection.filter(function(model) {
+            return model.get('isDone') === false;
+          });
+        }
 
       });
 

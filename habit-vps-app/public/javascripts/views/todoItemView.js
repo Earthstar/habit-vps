@@ -11,7 +11,6 @@ define(function(require) {
 
     // args.model todoModel
     initialize: function(args) {
-      console.log(args.model);
       this.render();
     },
 
