@@ -7,6 +7,7 @@ define(function(require) {
 // Always get the species from the pet
   return Backbone.Model.extend({
     urlRoot: '/api/pets',
+    idAttribute: '_id',
 
     speciesModel: null,
 
@@ -16,7 +17,7 @@ define(function(require) {
           deferred = $.Deferred();
       // Species is unlikely to change, so can be cached
       if (!this.speciesModel) {
-        this.speciesModel = new SpeciesModel({id: this.attributes.species});
+        this.speciesModel = new SpeciesModel({_id: this.attributes.species});
         this.speciesModel.fetch()
         .then(function() {
           obj.trigger('sync');
