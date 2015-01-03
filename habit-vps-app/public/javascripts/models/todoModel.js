@@ -1,9 +1,9 @@
 define(function(require) {
   var Backbone = require('backbone');
-      // TodoCollection = require('collections/todoCollection');
 
   return Backbone.Model.extend({
     urlRoot: '/api/todos',
+    idAttribute: '_id'
     // defaults: function() {
     //   return {
     //     title: 'Add new todo item',
