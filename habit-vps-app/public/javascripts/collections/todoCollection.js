@@ -1,8 +1,8 @@
 define(function(require) {
-  var Backbone = require('backbone'),
+  var Webcore = require('webcore'),
       TodoModel = require('models/todoModel');
 
-  return Backbone.Collection.extend({
+  return Webcore.Collection.extend({
     model: TodoModel,
 
     url: '/api/todos',

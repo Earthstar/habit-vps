@@ -58,6 +58,7 @@ define(function(require) {
 
       this.injectView('pet-display-site', this._petView);
       this.injectView('adventure-display-site', this._adventureView);
+      this.delegateEvents();
     }
 
   });

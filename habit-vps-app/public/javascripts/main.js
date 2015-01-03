@@ -6,7 +6,7 @@ require.config({
     backbone: '/bower_components/backbone-amd/backbone-min',
     handlebars: '/bower_components/handlebars/handlebars.runtime.min',
     "backbone-nested": '/bower_components/backbone-nested-model/backbone-nested',
-    webcore: 'webcore.min'
+    webcore: 'webcore.beautified'
   }
 });
 
