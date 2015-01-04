@@ -71,9 +71,9 @@ var _restApi = function(router, route, model, opts) {
         var resource = new model(req.body);
         resource.save(function(err, resource) {
           if (err) {
+
             return next(err);
           }
-
           res.json(resource);
         });
       });
@@ -82,8 +82,13 @@ var _restApi = function(router, route, model, opts) {
       // curl -X PUT --data 'title=SomeOtherTitle&order=5&isDone=true&points=2' http://localhost:3000/api/todos/547a5379c4b26e0078c022cd
       .put(function(req, res, next) {
         var resource = req.resource;
+        // Get rid of the _id parameter in the request body to prevent error
+        if (req.body._id) {
+          delete req.body._id;
+        }
         resource.update(req.body, function(err) {
           if (err) {
+            console.log(err);
             return next(err);
           }
           res.json(resource);
