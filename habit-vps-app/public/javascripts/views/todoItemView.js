@@ -6,7 +6,7 @@ define(function(require) {
     template: templates.todoItem,
 
     events: {
-      'click input': 'print'
+      'click input': 'toggleDone'
     },
 
     // args.model todoModel
@@ -24,8 +24,9 @@ define(function(require) {
       this.delegateEvents();
     },
 
-    print: function(event) {
-      console.log(event);
+    toggleDone: function(event) {
+      this.model.set('isDone', !this.model.get('isDone'));
+      this.model.save();
     }
   });
 });

@@ -4,8 +4,7 @@ define(function(require) {
       templates = require('templates'),
       TodoCollection = require('collections/todoCollection'),
       TodoItemView = require('views/todoItemView'),
-      AddTodoView = require('views/addTodoView'),
-      DoneTodoView = require('views/doneTodoView');
+      AddTodoView = require('views/addTodoView');
 
   return Webcore.View.extend({
     template: templates.todoLayout,
@@ -29,7 +28,7 @@ define(function(require) {
       this._doneTodosView = new Webcore.Views.List({
         collection: this._todoCollection,
         childModel: 'model',
-        childView: DoneTodoView,
+        childView: TodoItemView,
         modelsToRender: function() {
           return obj._todoCollection.filter(function(model) {
             return model.get('isDone') === true;

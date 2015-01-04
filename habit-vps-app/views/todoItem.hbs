@@ -1,4 +1,4 @@
 <div class="row todo-item">
-  <input type="checkbox" class="checkbox-inline">
-  <span>{{title}} (+{{points}} point)</span>
+  <input type="checkbox" class="checkbox-inline" {{#if isDone}}checked{{/if}}>
+  <span>{{title}} ({{#if isDone}}-{{else}}+{{/if}}{{points}} point)</span>
 </div>
