@@ -9,7 +9,6 @@ define(function(require) {
       this.super();
       this.listViewSetup(args);
       this.listenTo(this.collection, 'change', this.reRenderChildren);
-      this.listenTo(this.collection, 'all', function() {console.log(arguments)})
       this.render();
     },
 

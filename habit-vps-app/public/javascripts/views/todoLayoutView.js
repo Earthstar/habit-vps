@@ -21,10 +21,6 @@ define(function(require) {
         childView: TodoItemView,
         // This view only shows todos that are not done
         modelsToRender: function() {
-          console.log("in unfinished todos modelsToRender");
-          console.log(obj._todoCollection.filter(function(model) {
-            return model.get('isDone') === false;
-          }))
           return obj._todoCollection.filter(function(model) {
             return model.get('isDone') === false;
           });
@@ -35,11 +31,6 @@ define(function(require) {
         childModel: 'model',
         childView: TodoItemView,
         modelsToRender: function() {
-          // Models To Render is producing the expected number of models, but why isn't the new one being rendered?
-          console.log("in unfinished todos modelsToRender");
-          console.log(obj._todoCollection.filter(function(model) {
-            return model.get('isDone') === true;
-          }))
           return obj._todoCollection.filter(function(model) {
             return model.get('isDone') === true;
           });

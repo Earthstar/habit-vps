@@ -20,15 +20,13 @@ define(function(require) {
 
     render: function() {
       var context = this.prepare();
-      this.templateRender(this.$el, this.template, context);
+      // force: true because templateRender isn't smart about checkbox state
+      this.templateRender(this.$el, this.template, context, {force: true});
       this.delegateEvents();
     },
 
     toggleDone: function(event) {
-      console.log('toggleDone');
-      // not sure if this is the best way of doing it
-      var checkbox = event.currentTarget;
-      this.model.save({isDone: checkbox.checked});
+      this.model.save({isDone: !this.model.get('isDone')});
     }
   });
 });
