@@ -25,8 +25,10 @@ define(function(require) {
     },
 
     toggleDone: function(event) {
-      this.model.set('isDone', !this.model.get('isDone'));
-      this.model.save();
+      console.log('toggleDone');
+      // not sure if this is the best way of doing it
+      var checkbox = event.currentTarget;
+      this.model.save({isDone: checkbox.checked});
     }
   });
 });

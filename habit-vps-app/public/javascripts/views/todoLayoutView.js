@@ -2,6 +2,7 @@ define(function(require) {
   var Webcore = require('webcore'),
       _ = require('underscore'),
       templates = require('templates'),
+      ChangingListView = require('views/changingListView'),
       TodoCollection = require('collections/todoCollection'),
       TodoItemView = require('views/todoItemView'),
       AddTodoView = require('views/addTodoView');
@@ -14,22 +15,31 @@ define(function(require) {
       // problem: only one model is showing up?
       this._todoCollection = new TodoCollection();
 
-      this._unfinishedTodosView = new Webcore.Views.List({
+      this._unfinishedTodosView = new ChangingListView({
         collection: this._todoCollection,
         childModel: 'model',
         childView: TodoItemView,
         // This view only shows todos that are not done
         modelsToRender: function() {
+          console.log("in unfinished todos modelsToRender");
+          console.log(obj._todoCollection.filter(function(model) {
+            return model.get('isDone') === false;
+          }))
           return obj._todoCollection.filter(function(model) {
             return model.get('isDone') === false;
           });
         }
       });
-      this._doneTodosView = new Webcore.Views.List({
+      this._doneTodosView = new ChangingListView({
         collection: this._todoCollection,
         childModel: 'model',
         childView: TodoItemView,
         modelsToRender: function() {
+          // Models To Render is producing the expected number of models, but why isn't the new one being rendered?
+          console.log("in unfinished todos modelsToRender");
+          console.log(obj._todoCollection.filter(function(model) {
+            return model.get('isDone') === true;
+          }))
           return obj._todoCollection.filter(function(model) {
             return model.get('isDone') === true;
           });
@@ -37,7 +47,6 @@ define(function(require) {
       });
 
       this._addTodoView = new AddTodoView({collection: this._todoCollection});
-
       this._todoCollection.fetch();
       this.render();
     },
@@ -54,6 +63,6 @@ define(function(require) {
       this.injectView('add-todo-site', this._addTodoView);
       this.injectView('done-todo-site', this._doneTodosView);
       this.delegateEvents();
-    }
+    },
   });
 });
