@@ -1,1 +1,1 @@
-{ "__v" : 0, "_id" : { "$oid" : "5499c715e2536a0e24bc3f38" }, "adventures" : [], "name" : "Plain", "pointsToUnlock" : 1 }
+{ "__v" : 0, "_id" : { "$oid" : "5499c715e2536a0e24bc3f38" }, "adventures" : [{"name": "My first adventure", "text": "This is an exciting adventure", "hasDrop": false}], "name" : "Plain", "pointsToUnlock" : 1 }
