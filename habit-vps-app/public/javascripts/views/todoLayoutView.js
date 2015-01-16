@@ -2,6 +2,7 @@ define(function(require) {
   var Webcore = require('webcore'),
       _ = require('underscore'),
       templates = require('templates'),
+      caches = require('caches'),
       ChangingListView = require('views/changingListView'),
       TodoCollection = require('collections/todoCollection'),
       TodoItemView = require('views/todoItemView'),
@@ -12,9 +13,10 @@ define(function(require) {
 
     initialize: function() {
       var obj = this;
-      // problem: only one model is showing up?
-      this._todoCollection = new TodoCollection();
+      this._userDataModel = caches.userDataModel;
+      this.listenTo(this._userDataModel, 'change', this.render);
 
+      this._todoCollection = new TodoCollection();
       this._unfinishedTodosView = new ChangingListView({
         collection: this._todoCollection,
         childModel: 'model',
@@ -43,7 +45,8 @@ define(function(require) {
     },
 
     prepare: function() {
-      return {};
+      console.log(this._userDataModel);
+      return {user: this._userDataModel.toJSON()};
     },
 
     render: function() {

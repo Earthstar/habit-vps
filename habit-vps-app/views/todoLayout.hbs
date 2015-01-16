@@ -1,7 +1,7 @@
 <div class="todo-display col-md-8">
-  <h2 class="row title">Here's what's on your plate, Alex:</h2>
+  <h2 class="row title">Here's what's on your plate, {{user.name}}:</h2>
   <div inject="unfinished-todo-site"/>
   <div class="row add-todo" inject="add-todo-site"/>
-  <h2 class="row title">Your successes so far:</h2>
+  <h2 class="row title">You've earned {{user.points}} points so far:</h2>
   <ul class="done-todo" inject="done-todo-site"/>
 </div>

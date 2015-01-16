@@ -1,16 +1,19 @@
 define(function(require) {
   var Backbone = require('backbone');
 
+
   return Backbone.Model.extend({
-    urlRoot: '/api/userData',
+    // hack for now. Will refactor when users are created
+    url: function() {
+      return '/api/userData';
+    },
+
     idAttribute: '_id',
 
-    defaults: function() {
-      return {
-        name: 'Alex',
-        points: 2,
-        unlockedAdventureZones: []
-      };
+    parse: function(response) {
+      console.log(response);
+      return response[0];
     }
+
   });
 });
