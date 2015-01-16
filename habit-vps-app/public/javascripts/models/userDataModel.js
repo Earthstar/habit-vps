@@ -4,6 +4,7 @@ define(function(require) {
 
   return Backbone.Model.extend({
     // hack for now. Will refactor when users are created
+    // Actually, this is kind of awkward for saving
     url: function() {
       return '/api/userData';
     },
@@ -11,9 +12,8 @@ define(function(require) {
     idAttribute: '_id',
 
     parse: function(response) {
-      console.log(response);
       return response[0];
-    }
+    },
 
   });
 });

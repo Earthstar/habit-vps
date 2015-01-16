@@ -45,7 +45,6 @@ define(function(require) {
     },
 
     prepare: function() {
-      console.log(this._userDataModel);
       return {user: this._userDataModel.toJSON()};
     },
 
