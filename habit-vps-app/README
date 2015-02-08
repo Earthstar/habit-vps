@@ -1,0 +1,28 @@
+# To get started
+
+Install dependencies
+
+    $ npm install
+
+Start mongodb
+
+    $ sudo service mongod start
+
+Populate database
+
+    $ grunt populate
+
+Start a watch on hbs files
+
+    $ grunt watch
+
+Start app
+
+    $ npm start
+
+The app should appear at localhost:3000
+
+# Known issues
+
+* Can't run watch and default task in the same process
+* When grunt watch task is run, there will always be an error message. The task still works though.
