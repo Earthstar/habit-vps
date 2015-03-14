@@ -11,7 +11,7 @@ beforeEach(function() {
   this.addMatchers(customMatchers);
 });
 
-frisby.create('GET todo model')
+frisby.create('GET all todo models')
 .get(URL + 'todos')
 .expectStatus(200)
 .toss();
@@ -22,6 +22,9 @@ var newTodo = {
   points: 1,
   title: 'This is a test todo that should not appear in production'
 };
+
+// TODO: test to get the newly created model
+// Test to get the model after deleted and assert false
 
 frisby.create('POST todo model')
 .post(URL + 'todos', newTodo)
