@@ -81,6 +81,14 @@ module.exports = function(grunt) {
           }
         ]
       }
+    },
+    jasmine: {
+      // Integration tests need to be run when the server is running
+      integration: {
+        options: {
+          specs: 'test/**/*Spec.js'
+        }
+      }
     }
   });
 
@@ -89,6 +97,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-mongoimport');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   grunt.event.on('watch', function(action, filepath, target) {
     grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

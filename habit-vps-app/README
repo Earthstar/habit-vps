@@ -22,6 +22,10 @@ Start app
 
 The app should appear at localhost:3000
 
+To run api tests (requires server)
+
+    $ npm run itest
+
 # Known issues
 
 * Can't run watch and default task in the same process

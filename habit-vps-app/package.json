@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "grunt",
-    "populate": "grunt populate"
+    "populate": "grunt populate",
+    "itest": "jasmine-node --verbose test/integration"
   },
   "dependencies": {
     "body-parser": "~1.8.1",
@@ -21,8 +22,11 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-handlebars": "^0.9.1",
-    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-watch": "~0.6.1",
     "grunt-express": "^1.4.1",
-    "grunt-mongoimport": "^0.1.5"
+    "grunt-mongoimport": "^0.1.5",
+    "grunt-contrib-jasmine": "~0.8.2",
+    "frisby": "~0.8.5",
+    "jasmine-node": "~1.14.5"
   }
 }
